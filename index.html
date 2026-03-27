@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -495,6 +496,7 @@
     cursor: pointer;
     padding: 4px;
     z-index: 200;
+    position: relative;
   }
 
   .nav-hamburger span {
@@ -540,16 +542,21 @@
 
     .nav-links {
       position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
       background: var(--cream);
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 2.5rem;
+      gap: 3rem;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.35s ease;
-      z-index: 150;
+      z-index: 149;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
 
     .nav-links.open {
@@ -558,9 +565,12 @@
     }
 
     .nav-links a {
-      font-size: 1rem;
-      letter-spacing: 0.2em;
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      color: var(--ink);
     }
+
+    .nav-links a:hover { color: var(--accent); }
 
     /* Hero */
     .hero {
@@ -825,6 +835,7 @@
     .lightbox-next { right: 0.5rem; }
   }
 </style>
+
 </head>
 <body>
 
@@ -869,93 +880,95 @@
 
   <div class="portfolio-grid">
 
-    <div class="portfolio-item wide">
-      <img src="aadhi_s_room_5.jpg" alt="Dark luxury bedroom, Kochi">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Dark Luxury Apartment</h3>
-        <span>Residential · Ernakulam, Kerala</span>
-      </div></div>
-    </div>
+```
+<div class="portfolio-item wide">
+  <img src="aadhi_s_room_5.jpg" alt="Dark luxury bedroom, Kochi">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Dark Luxury Apartment</h3>
+    <span>Residential · Ernakulam, Kerala</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item tall">
-      <img src="cutting_area_1.jpg" alt="Scissor Magic salon">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Scissor Magic Salon</h3>
-        <span>Hospitality · Kerala, 2023</span>
-      </div></div>
-    </div>
+<div class="portfolio-item tall">
+  <img src="cutting_area_1.jpg" alt="Scissor Magic salon">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Scissor Magic Salon</h3>
+    <span>Hospitality · Kerala, 2023</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item">
-      <img src="aadhi_s_room_3.jpg" alt="Bedroom detail with leather headboard">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Dark Luxury Apartment</h3>
-        <span>Master bedroom detail</span>
-      </div></div>
-    </div>
+<div class="portfolio-item">
+  <img src="aadhi_s_room_3.jpg" alt="Bedroom detail with leather headboard">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Dark Luxury Apartment</h3>
+    <span>Master bedroom detail</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item">
-      <img src="foldable_study_space_shade_option.jpg" alt="Foldable study space with backlit shelves">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Studio Apartment</h3>
-        <span>Residential · Kochi, 2025</span>
-      </div></div>
-    </div>
+<div class="portfolio-item">
+  <img src="foldable_study_space_shade_option.jpg" alt="Foldable study space with backlit shelves">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Studio Apartment</h3>
+    <span>Residential · Kochi, 2025</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item wide">
-      <img src="master_bedroom_3.jpg" alt="Master bedroom with wood slat wall">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Residential Project 2025</h3>
-        <span>Residential · Ernakulam, Kerala</span>
-      </div></div>
-    </div>
+<div class="portfolio-item wide">
+  <img src="master_bedroom_3.jpg" alt="Master bedroom with wood slat wall">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Residential Project 2025</h3>
+    <span>Residential · Ernakulam, Kerala</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item">
-      <img src="kiosk_side_view.jpg" alt="Kulfichai kiosk, Abu Dhabi">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Kulfichai Kiosk</h3>
-        <span>Commercial · Abu Dhabi, 2023</span>
-      </div></div>
-    </div>
+<div class="portfolio-item">
+  <img src="kiosk_side_view.jpg" alt="Kulfichai kiosk, Abu Dhabi">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Kulfichai Kiosk</h3>
+    <span>Commercial · Abu Dhabi, 2023</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item">
-      <img src="face_bed_area.jpg" alt="Makeover beauty spa treatment room">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Makeover Beauty Spa</h3>
-        <span>Hospitality · 2023</span>
-      </div></div>
-    </div>
+<div class="portfolio-item">
+  <img src="face_bed_area.jpg" alt="Makeover beauty spa treatment room">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Makeover Beauty Spa</h3>
+    <span>Hospitality · 2023</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item">
-      <img src="image_for_print_2.jpg" alt="Frozen ice cream store, Ontario Canada">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Frozen Creamery</h3>
-        <span>Commercial · Ontario, Canada</span>
-      </div></div>
-    </div>
+<div class="portfolio-item">
+  <img src="image_for_print_2.jpg" alt="Frozen ice cream store, Ontario Canada">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Frozen Creamery</h3>
+    <span>Commercial · Ontario, Canada</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item">
-      <img src="seating_area.jpg" alt="Outdoor seating pavilion, Kerala">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Residential Seating Pavilion</h3>
-        <span>Outdoor · Kerala</span>
-      </div></div>
-    </div>
+<div class="portfolio-item">
+  <img src="seating_area.jpg" alt="Outdoor seating pavilion, Kerala">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Residential Seating Pavilion</h3>
+    <span>Outdoor · Kerala</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item wide">
-      <img src="cahcounter_near_stairs.jpg" alt="Horizon footwear store">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Horizon Footwear Store</h3>
-        <span>Retail · Kerala, 2021</span>
-      </div></div>
-    </div>
+<div class="portfolio-item wide">
+  <img src="cahcounter_near_stairs.jpg" alt="Horizon footwear store">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Horizon Footwear Store</h3>
+    <span>Retail · Kerala, 2021</span>
+  </div></div>
+</div>
 
-    <div class="portfolio-item">
-      <img src="cutting_area_3.jpg" alt="Scissor Magic salon detail">
-      <div class="portfolio-overlay"><div class="portfolio-info">
-        <h3>Scissor Magic — Detail</h3>
-        <span>Hospitality · 2023</span>
-      </div></div>
-    </div>
+<div class="portfolio-item">
+  <img src="cutting_area_3.jpg" alt="Scissor Magic salon detail">
+  <div class="portfolio-overlay"><div class="portfolio-info">
+    <h3>Scissor Magic — Detail</h3>
+    <span>Hospitality · 2023</span>
+  </div></div>
+</div>
+```
 
   </div>
 </section>
@@ -1094,6 +1107,7 @@
 </footer>
 
 <!-- Lightbox -->
+
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
   <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
   <button class="lightbox-close" id="lightboxClose" aria-label="Close">&#x2715;</button>
@@ -1240,5 +1254,6 @@ function handleSubmit(e) {
   });
 })();
 </script>
+
 </body>
 </html>
