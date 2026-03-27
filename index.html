@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Interiors — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F9F6F1;
+    --ink: #1A1814;
+    --muted: #8A857C;
+    --accent: #C5A882;
+    --border: #E2DDD6;
+    --white: #FFFFFF;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--cream);
+    color: var(--ink);
+    font-weight: 300;
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    background: rgba(249, 246, 241, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 2rem;
+  }
+
+  .hero-title em { font-style: italic; color: var(--muted); }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    color: var(--muted);
+    max-width: 380px;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    background: var(--ink);
+    color: var(--cream);
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.25s;
+    width: fit-content;
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .hero-image { position: relative; overflow: hidden; }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    object-fit: cover;
+    display: block;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--ink);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  section { padding: 7rem 4rem; }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+
+  .section-link {
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+
+  .section-link:hover { color: var(--ink); border-color: var(--ink); }
+
+  #portfolio { background: var(--white); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+  }
+
+  .portfolio-item {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: #E0D9CF;
+  }
+
+  .portfolio-item.tall { grid-row: span 2; }
+  .portfolio-item.wide { grid-column: span 2; }
+
+  .portfolio-item img {
+    width: 100%;
+    height: 100%;
+    min-height: 320px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .portfolio-item.tall img,
+  .portfolio-item.wide img { min-height: 480px; }
+
+  .portfolio-item:hover img { transform: scale(1.04); }
+
+  .portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,24,20,0);
+    transition: background 0.4s;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+  }
+
+  .portfolio-item:hover .portfolio-overlay { background: rgba(26,24,20,0.52); }
+
+  .portfolio-info {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s, transform 0.35s;
+  }
+
+  .portfolio-item:hover .portfolio-info { opacity: 1; transform: translateY(0); }
+
+  .portfolio-info h3 {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 0.25rem;
+  }
+
+  .portfolio-info span {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(249,246,241,0.65);
+  }
+
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    background: var(--cream);
+  }
+
+  .about-image-wrap { position: relative; }
+
+  .about-image-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+  }
+
+  .about-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .about-accent {
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--accent);
+    z-index: -1;
+  }
+
+  .about-content { padding: 1rem 0; }
+
+  .about-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.4;
+    margin: 1.5rem 0 2rem;
+  }
+
+  .about-text {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.9;
+    margin-bottom: 1.25rem;
+  }
+
+  #services { background: var(--ink); }
+  #services .section-title { color: var(--cream); }
+  #services .section-eyebrow { color: var(--accent); }
+  #services .section-header { border-bottom-color: rgba(255,255,255,0.1); }
+  #services .section-link { color: rgba(249,246,241,0.5); border-color: rgba(255,255,255,0.15); }
+  #services .section-link:hover { color: var(--cream); border-color: var(--cream); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .service-card {
+    background: var(--ink);
+    padding: 3rem 2.5rem;
+    transition: background 0.25s;
+  }
+
+  .service-card:hover { background: #252319; }
+
+  .service-number {
+    font-family: var(--serif);
+    font-size: 3rem;
+    font-weight: 300;
+    color: rgba(197,168,130,0.3);
+    display: block;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+  }
+
+  .service-name {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--cream);
+    margin-bottom: 1rem;
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: rgba(249,246,241,0.45);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .service-price {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  #contact { background: var(--white); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .contact-info p {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-detail-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .contact-detail-value { font-size: 0.95rem; color: var(--ink); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+
+  .form-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .form-input, .form-textarea, .form-select {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 0.9rem 1rem;
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  .form-input:focus, .form-textarea:focus, .form-select:focus { border-color: var(--accent); }
+  .form-textarea { resize: vertical; min-height: 130px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .btn-submit {
+    background: var(--ink);
+    color: var(--cream);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s;
+    align-self: flex-start;
+  }
+
+  .btn-submit:hover { background: var(--accent); }
+
+  footer {
+    background: var(--ink);
+    color: rgba(249,246,241,0.35);
+    padding: 2.5rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+  }
+
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--cream);
+    font-weight: 300;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-text > * { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-title   { animation-delay: 0.25s; }
+  .hero-desc    { animation-delay: 0.4s; }
+  .btn-primary  { animation-delay: 0.55s; }
+  .hero-stats   { animation-delay: 0.7s; }
+
+  @media (max-width: 1024px) {
+    nav { padding: 1.25rem 2rem; }
+    section { padding: 5rem 2rem; }
+    .hero-text { padding: 5rem 2rem; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    .portfolio-item.wide { grid-column: span 2; }
+    .portfolio-item.tall { grid-row: span 1; }
+    .services-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.5rem; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-image { display: none; }
+    section { padding: 4rem 1.5rem; }
+    #about, .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-item.wide,
+    .portfolio-item.tall { grid-column: span 1; grid-row: span 1; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Studio Name</a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-text">
+    <p class="hero-eyebrow">Interior Design Studio</p>
+    <h1 class="hero-title">Spaces that<br><em>breathe</em><br>and inspire</h1>
+    <p class="hero-desc">Crafting interiors that balance quiet elegance with purposeful living — every room a considered conversation between light, form, and feeling.</p>
+    <a href="#portfolio" class="btn-primary">View Portfolio</a>
+    <div class="hero-stats">
+      <div><span class="stat-num">8+</span><span class="stat-label">Years experience</span></div>
+      <div><span class="stat-num">50+</span><span class="stat-label">Projects completed</span></div>
+      <div><span class="stat-num">4</span><span class="stat-label">Countries</span></div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="_Washroom_2.jpg" alt="Dark luxury bathroom, Kochi">
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="section-header">
+    <div>
+      <p class="section-eyebrow">Selected works</p>
+      <h2 class="section-title">Portfolio</h2>
+    </div>
+    <a href="#contact" class="section-link">Commission a project →</a>
+  </div>
+
+  <div class="portfolio-grid">
+
+    <div class="portfolio-item wide">
+      <img src="aadhi_s_room_5.jpg" alt="Dark luxury bedroom, Kochi">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Dark Luxury Apartment</h3>
+        <span>Residential · Kochi, Kerala</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item tall">
+      <img src="cutting_area_1.jpg" alt="Scissor Magic salon">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Scissor Magic Salon</h3>
+        <span>Hospitality · Kerala, 2023</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="aadhi_s_room_3.jpg" alt="Bedroom detail with leather headboard">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Dark Luxury Apartment</h3>
+        <span>Master bedroom detail</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="foldable_study_space_shade_option.jpg" alt="Foldable study space with backlit shelves">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Studio Apartment</h3>
+        <span>Residential · Kochi, 2025</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item wide">
+      <img src="master_bedroom_3.jpg" alt="Master bedroom with wood slat wall">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Residential Project 2025</h3>
+        <span>Residential · Kochi, Kerala</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="kiosk_side_view.jpg" alt="Kulfichai kiosk, Abu Dhabi">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Kulfichai Kiosk</h3>
+        <span>Commercial · Abu Dhabi, 2023</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="face_bed_area.jpg" alt="Makeover beauty spa treatment room">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Makeover Beauty Spa</h3>
+        <span>Hospitality · 2023</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="image_for_print_2.jpg" alt="Frozen ice cream store, Ontario Canada">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Frozen Creamery</h3>
+        <span>Commercial · Ontario, Canada</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="seating_area.jpg" alt="Outdoor seating pavilion, Kerala">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Residential Seating Pavilion</h3>
+        <span>Outdoor · Kerala</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item wide">
+      <img src="cahcounter_near_stairs.jpg" alt="Horizon footwear store">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Horizon Footwear Store</h3>
+        <span>Retail · Kerala, 2021</span>
+      </div></div>
+    </div>
+
+    <div class="portfolio-item">
+      <img src="cutting_area_3.jpg" alt="Scissor Magic salon detail">
+      <div class="portfolio-overlay"><div class="portfolio-info">
+        <h3>Scissor Magic — Detail</h3>
+        <span>Hospitality · 2023</span>
+      </div></div>
+    </div>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-image-wrap">
+    <div class="about-image-frame">
+      <img src="master_bedroom_3.jpg" alt="Signature interior design work">
+    </div>
+    <div class="about-accent"></div>
+  </div>
+  <div class="about-content">
+    <p class="section-eyebrow">About the designer</p>
+    <blockquote class="about-quote">"Good design is nothing you notice — it is everything you feel."</blockquote>
+    <p class="about-text">With over 8 years of practice spanning residential, hospitality, and commercial spaces, [Designer Name] brings a deeply intuitive approach to every project. Based in Kochi, the work extends across Kerala, India, and internationally — from boutique salons to retail kiosks in Abu Dhabi and Canada.</p>
+    <p class="about-text">The studio believes in slow, considered design — taking time to understand how a client truly lives before a single piece of furniture is chosen or a wall is painted.</p>
+    <a href="#contact" class="btn-primary" style="margin-top:1rem;">Start a conversation</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-header">
+    <div>
+      <p class="section-eyebrow">What we offer</p>
+      <h2 class="section-title">Services</h2>
+    </div>
+    <a href="#contact" class="section-link">Get a quote →</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-number">01</span>
+      <h3 class="service-name">Full Interior Design</h3>
+      <p class="service-desc">End-to-end design for new builds and complete renovations — concept to completion, including FF&E, material selection, and site supervision.</p>
+      <p class="service-price">Starting at ₹2,50,000</p>
+    </div>
+    <div class="service-card">
+      <span class="service-number">02</span>
+      <h3 class="service-name">Space Planning</h3>
+      <p class="service-desc">A focused engagement on layout and flow — optimising your floor plan for how you actually live or work, before any investment is made.</p>
+      <p class="service-price">Starting at ₹45,000</p>
+    </div>
+    <div class="service-card">
+      <span class="service-number">03</span>
+      <h3 class="service-name">Consultation</h3>
+      <p class="service-desc">A single session (in-person or virtual) to review your space, clarify your vision, and get actionable direction you can implement at your own pace.</p>
+      <p class="service-price">₹8,000 / session</p>
+    </div>
+    <div class="service-card">
+      <span class="service-number">04</span>
+      <h3 class="service-name">Hospitality & Commercial</h3>
+      <p class="service-desc">Bespoke design for restaurants, boutique hotels, spas, and offices — balancing brand identity with guest experience and operational efficiency.</p>
+      <p class="service-price">Custom pricing</p>
+    </div>
+    <div class="service-card">
+      <span class="service-number">05</span>
+      <h3 class="service-name">Styling & Staging</h3>
+      <p class="service-desc">Refreshing an existing space with curated objects, textiles, and art — perfect for a seasonal refresh or pre-sale presentation.</p>
+      <p class="service-price">Starting at ₹20,000</p>
+    </div>
+    <div class="service-card">
+      <span class="service-number">06</span>
+      <h3 class="service-name">Online Design</h3>
+      <p class="service-desc">Full design packages delivered remotely — mood boards, sourcing guides, floor plans, and detailed product lists you can action anywhere in India.</p>
+      <p class="service-price">Starting at ₹35,000</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-header">
+    <div>
+      <p class="section-eyebrow">Get in touch</p>
+      <h2 class="section-title">Let's create<br>something together</h2>
+    </div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>Whether you have a new project in mind or simply want to explore what's possible, reach out — every great space starts with a conversation.</p>
+      <div class="contact-detail">
+        <span class="contact-detail-label">Email</span>
+        <span class="contact-detail-value">hello@studioname.in</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-label">Phone</span>
+        <span class="contact-detail-value">+91 98 0000 0000</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-label">Studio</span>
+        <span class="contact-detail-value">Kochi, Kerala — visits by appointment</span>
+      </div>
+      <div class="contact-detail">
+        <span class="contact-detail-label">Working across</span>
+        <span class="contact-detail-value">Kerala · Karnataka · Tamil Nadu · International</span>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First name</label>
+          <input type="text" class="form-input" placeholder="Arjun" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last name</label>
+          <input type="text" class="form-input" placeholder="Menon">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service of interest</label>
+        <select class="form-select">
+          <option value="">Select a service</option>
+          <option>Full Interior Design</option>
+          <option>Space Planning</option>
+          <option>Consultation</option>
+          <option>Hospitality & Commercial</option>
+          <option>Styling & Staging</option>
+          <option>Online Design</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Tell me about your project</label>
+        <textarea class="form-textarea" placeholder="Describe your space, timeline, and any inspiration you have in mind…"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Studio Name</span>
+  <span>© 2025 Studio Name. All rights reserved.</span>
+  <span>Designed with care in Kerala</span>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  btn.textContent = 'Message sent';
+  btn.style.background = 'var(--accent)';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Send message';
+    btn.style.background = 'var(--ink)';
+    btn.disabled = false;
+    e.target.reset();
+  }, 3000);
+}
+</script>
+</body>
+</html>
